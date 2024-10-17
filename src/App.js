@@ -41,37 +41,39 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="title">Hoax Checker</h1>
+      <section className="content">
+        <h1 className="title">Hoax Checker</h1>
 
-      {!isSubmitted && (
-        <div className="input-section">
-          <textarea
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Enter your question or text to verify..."
-            className="input-field"
-          ></textarea>
-          <button onClick={handleSubmit} className="submit-button">
-            Submit
-          </button>
-        </div>
-      )}
+        {!isSubmitted && (
+          <div className="input-section">
+            <textarea
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder="Enter your question or text to verify..."
+              className="input-field"
+            ></textarea>
+            <button onClick={handleSubmit} className="submit-button">
+              Submit
+            </button>
+          </div>
+        )}
 
-      {isSubmitted && loading && (
-        <div className="loading-section">
-          <div className="spinner"></div>
-          <p>Checking...</p>
-        </div>
-      )}
+        {isSubmitted && loading && (
+          <div className="loading-section">
+            <div className="spinner"></div>
+            <p>Checking...</p>
+          </div>
+        )}
 
-      {isSubmitted && result && (
-        <div className="result-section">
-          <h2>Result:</h2> <p>{result}</p>
-          <button onClick={handleReset} className="reset-button">
-            Check Another
-          </button>
-        </div>
-      )}
+        {isSubmitted && result && (
+          <div className="result-section">
+            <h2>Result:</h2> <p dangerouslySetInnerHTML={{ __html: result }} />
+            <button onClick={handleReset} className="reset-button">
+              Check Another
+            </button>
+          </div>
+        )}
+      </section>
 
       <footer className="footer">
         <p>© 2024 NASEKA. All rights reserved.</p>
